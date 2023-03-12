@@ -17,7 +17,9 @@ async def hoge(ctx:discord.Interaction):
     token = res.json()["token"]
     username = res.json()["username"]
     exp = res.json()["expires"]
-    expires = exp.replace("T", " ")
+    exp = exp.replace("T", " ")
+    char = "."
+    expires = exp[:exp.index(char)] if char in exp else exp
     embed=discord.Embed(title="TheAltening Token Generator", color=0x1ab725)
     embed.add_field(name="Token", value=f"```{token}```", inline=False)
     embed.add_field(name="Username", value=f"```{username}```", inline=True)
