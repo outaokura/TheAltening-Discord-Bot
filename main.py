@@ -18,12 +18,10 @@ async def hoge(ctx:discord.Interaction):
     username = res.json()["username"]
     exp = res.json()["expires"]
     expires = exp.replace("T", " ")
-    image_url = "https://minotar.net/armor/bust/" + username +"/190.png"
     embed=discord.Embed(title="TheAltening Token Generator", color=0x1ab725)
     embed.add_field(name="Token", value=f"```{token}```", inline=False)
     embed.add_field(name="Username", value=f"```{username}```", inline=True)
     embed.set_footer(text=f"このTokenは{expires}に無効になります")
-    embed.set_thumbnail(url=image_url)
     await ctx.response.send_message(embed=embed)
 
 @client.event
